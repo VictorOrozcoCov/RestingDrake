@@ -80,6 +80,13 @@
 			<version>1.0.2</version>
 		</dependency>
 
+		<!-- JPA EJB -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+		</dependency>
+
 		<!-- Postgresql Drivers -->
 		<dependency>
 			<groupId>org.postgresql</groupId>

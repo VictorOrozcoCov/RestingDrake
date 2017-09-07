@@ -4,25 +4,30 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_CLASSES")
+@Table(name = "tbl_classes", schema = "dungeon_schema")
 public class DClass implements Serializable {
 	private static final long serialVersionUID = -5697950250572602535L;
 
+	//@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "class_id")
-	private int classId;
+	private Integer classId;
 
 	@Column(name = "class_name")
 	private String className;
 
 	public DClass() {
+	}
+
+	public DClass(int classId, String className) {
+		super();
+		this.classId = classId;
+		this.className = className;
 	}
 
 	public int getClassId() {
@@ -39,6 +44,11 @@ public class DClass implements Serializable {
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+	@Override
+	public String toString() {
+		return "DClass [classId=" + classId + ", className=" + className + "]";
 	}
 
 }
