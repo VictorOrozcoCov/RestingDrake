@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,9 +14,8 @@ import javax.persistence.Table;
 public class DRace implements Serializable {
 	private static final long serialVersionUID = 4133140254292472098L;
 
-	//@SequenceGenerator(name="seq2", initialValue=1, allocationSize=100)
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq2")
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "race_id")
 	private Integer raceId;
 
@@ -48,7 +49,7 @@ public class DRace implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DRace [raceId=" + raceId + ", raceName=" + raceName + "]";
+		return "Race [id=" + raceId + ", name=" + raceName + "]";
 	}
 
 }

@@ -2,11 +2,14 @@ package com.iavega.services.restfuldragon.resources;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.iavega.services.restfuldragon.domain.DRaceRequest;
 
 @Path("/races")
 @Produces(MediaType.APPLICATION_JSON)
@@ -25,10 +28,23 @@ public class RacesResource {
 		return racesImpl.getRaces();
 	}
 
+	@POST()
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response addRace(DRaceRequest request) {
+		return racesImpl.addRace(request);
+	}
+
 	@GET()
-	@Path("/{id}")
+	@Path("/{id: \\d{1,2}}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getRace(@PathParam("id") String raceId) {
-		return racesImpl.getRace(raceId);
+	public Response getRaceById(@PathParam("id") String raceId) {
+		return racesImpl.getRaceById(raceId);
+	}
+	
+	@GET
+	@Path("/{name: \\w{2,}}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getRaceByName(@PathParam("name") String raceName) {
+		return racesImpl.getRaceByName(raceName);
 	}
 }
